@@ -8,10 +8,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.woofapplication.R
 
+//Tạo đối tượng fontFamily mới được là robot
 val Robot = FontFamily(
     Font(R.font.roboto_regular)
 )
 
+//Định nghĩa kiểu chữ cho các mục tiêu củ thể
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = Robot,

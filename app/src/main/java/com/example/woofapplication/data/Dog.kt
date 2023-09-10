@@ -10,6 +10,7 @@ data class Dog(
     val age: Int,
     @StringRes val hobbies: Int
 )
+//Data chứa các thuộc tính và kiểu dữ liệu của chúng
 
 val dogs = listOf(
     Dog(R.drawable.koda, R.string.dog_name_1, 2, R.string.dog_description_1),
@@ -22,3 +23,4 @@ val dogs = listOf(
     Dog(R.drawable.tzeitel, R.string.dog_name_8, 7, R.string.dog_description_8),
     Dog(R.drawable.leroy, R.string.dog_name_9, 4, R.string.dog_description_9)
 )
+//một list chứa các đối tượng dog gồm pic, name, age, hobiies

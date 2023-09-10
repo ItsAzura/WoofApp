@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+//khi người dùng chuyển darkmode thì có những màu này
 private val DarkColorScheme = darkColorScheme(
     primary = md_theme_dark_primary,
     onPrimary = md_theme_dark_onPrimary,
@@ -47,6 +48,7 @@ private val DarkColorScheme = darkColorScheme(
     scrim = md_theme_dark_scrim,
 )
 
+//khi người dùng chuyển lightmode thì có những màu này
 private val LightColorScheme = lightColorScheme(
     primary = md_theme_light_primary,
     onPrimary = md_theme_light_onPrimary,
@@ -81,30 +83,49 @@ private val LightColorScheme = lightColorScheme(
 
 @Composable
 fun WoofApplicationTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = false   ,
-    content: @Composable () -> Unit
+    darkTheme: Boolean = isSystemInDarkTheme(),//hỏi xem có phải darkmode hay ko?
+    dynamicColor: Boolean = false ,//hỏi xem app có dùng màu động hay không? gắn giá trị mắc định là false
+    content: @Composable () -> Unit //đại diện cho giao diện người dùng
 ) {
     val colorScheme = when {
+        //TH1
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            //Nếu dynamicColor được bật và thiết bị chạy từ Android 12 trở lên
             val context = LocalContext.current
+            //Lấy Context từ môi trường cục bộ.
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            //Nếu không, nếu thì darkTheme đc bật và sử dụng bảng màu tối
+            // Nếu ko thoả mãn đk nào thì sử dụng bảng màu sáng
         }
+        //TH2
         darkTheme -> DarkColorScheme
+        //Nếu darktheme được bật thì gán màu từ darkColorScheme vào colorScheme
         else -> LightColorScheme
+        //Nếu không thì gán lightColorScheme vào colorScheme
     }
     val view = LocalView.current
+    //cho phép bạn truy cập đến view mà compose đang hiện thị
     if (!view.isInEditMode) {
+        //kiểm tra view đang không ở chế độ chỉnh sửa
         SideEffect {
+            //thực hiện các tác vụ liên quan đến thanh trạng thái
             val window = (view.context as Activity).window
+            //lấy tham chiếu đến cửa sổ của activity đang chứa compose
             window.statusBarColor = colorScheme.primary.toArgb()
+            //đặt thanh trang thái thành màu primary trả về màu ARGB
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            //Điều chỉnh giao diện của thanh trạng thái dựa vào darktheme nếu darkTheme = true
         }
     }
     MaterialTheme(
+        //Áp dụng cá cài đặt vào giao diện người dùng
         colorScheme = colorScheme,
+        //xác định bảng màu
         typography = Typography,
+        //Xác định kiểu chữ
         shapes = Shapes,
+        //Xác đinh hình dáng ui
         content = content
+        //Xác định giao diện phần nội dung
     )
 }

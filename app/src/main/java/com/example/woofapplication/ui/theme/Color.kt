@@ -2,6 +2,7 @@ package com.example.woofapplication.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+//Khai báo màu sắc cho theme gồm lightmode và darkmode
 val md_theme_light_primary = Color(0xFF006398)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
 val md_theme_light_primaryContainer = Color(0xFFCDE5FF)
@@ -63,6 +64,5 @@ val md_theme_dark_shadow = Color(0xFF000000)
 val md_theme_dark_surfaceTint = Color(0xFF94CCFF)
 val md_theme_dark_outlineVariant = Color(0xFF42474E)
 val md_theme_dark_scrim = Color(0xFF000000)
-
 
 val seed = Color(0xFFA2D2FF)

@@ -35,12 +35,11 @@ import androidx.compose.ui.unit.dp
 import com.example.woofapplication.ui.theme.WoofApplicationTheme
 import com.example.woofapplication.data.Dog
 import com.example.woofapplication.data.dogs
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            WoofApplicationTheme{
+            WoofApplicationTheme{ //sử dụng compose để thiết lập theme cho ui
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
@@ -50,6 +49,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+//Hàm compose app tổng hợp gồm top bar và các đối tượng dogitem
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofApp() {
@@ -68,6 +68,7 @@ fun WoofApp() {
         }
     }
 }
+//Hàm compose Tạo top bar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WoofTopAppBar(modifier: Modifier = Modifier){
@@ -96,6 +97,7 @@ fun WoofTopAppBar(modifier: Modifier = Modifier){
         modifier = modifier
     )
 }
+//Hàm compose tạo đối tượng dogItem
 @Composable
 fun DogItem(
     dog: Dog,
@@ -113,6 +115,7 @@ fun DogItem(
         }
     }
 }
+//Hàm Compose tạo icon
 @Composable
 fun DogIcon(
     @DrawableRes dogIcon: Int,
@@ -128,6 +131,7 @@ fun DogIcon(
         contentDescription = null
     )
 }
+//Hàm compose tạo info
 @Composable
 fun DogInformation(
     @StringRes dogName: Int,
@@ -148,6 +152,7 @@ fun DogInformation(
         )
     }
 }
+//thử nghiệm
 @Preview
 @Composable
 fun WoofPreview() {
