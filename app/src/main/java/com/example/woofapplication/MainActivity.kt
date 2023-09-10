@@ -117,7 +117,7 @@ fun DogItem(
     modifier: Modifier = Modifier
 ) {
     var expanded by remember { mutableStateOf(false) }
-    //Tạo 1 biến xepanded gán giá trị false với mục đích xem nó đã mở hobby hay chưa
+    //Tạo 1 biến expanded gán giá trị false với mục đích xem nó đã mở hobby hay chưa
     Card(modifier = modifier) {
         Column(
             modifier = Modifier
